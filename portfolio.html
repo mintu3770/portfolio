@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashwanth Chowdary - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* General Body Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Container for content sections */
+        section {
+            padding: 60px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #fff;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border-radius: 8px;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #f4f4f4;
+        }
+
+        h1, h2, h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: #3498db;
+            border-radius: 2px;
+        }
+
+        /* Header & Navigation */
+        #hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://via.placeholder.com/1500x800/2c3e50/ffffff?text=Your+Background+Image') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Add a subtle animation for the background if desired */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            animation: fadeIn 2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        nav {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: background-color 0.3s ease; /* For scrolled state */
+        }
+
+        nav.scrolled {
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #3498db;
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #3498db;
+            transform: translateY(-2px);
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Social Links (Hero and Contact) */
+        .social-links, .social-links-bottom {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-links a, .social-links-bottom a {
+            color: #fff;
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-links-bottom a {
+            color: #2c3e50; /* Darker for contact section */
+        }
+
+        .social-links a:hover, .social-links-bottom a:hover {
+            color: #3498db;
+            transform: translateY(-5px);
+        }
+
+        /* Buttons */
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: #fff;
+            border: 2px solid #3498db;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: #ecf0f1;
+            color: #34495e;
+            border: 2px solid #bdc3c7;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        .btn-secondary:hover {
+            background-color: #bdc3c7;
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .skill-category {
+            background-color: #fcfcfc;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        .skill-category h3 {
+            color: #3498db;
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category ul li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #eee;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category ul li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-category ul li::before {
+            content: "\f00c"; /* Font Awesome check icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: #2ecc71;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+
+        /* Projects Section */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background-color: #fcfcfc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .project-card p {
+            font-size: 0.95em;
+            color: #555;
+            flex-grow: 1; /* Allows text to take up available space */
+            margin-bottom: 20px;
+        }
+
+        .project-tech span {
+            display: inline-block;
+            background-color: #eaf2f8;
+            color: #3498db;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            margin-right: 8px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .project-links {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Space between buttons */
+        }
+
+        /* Experience Section */
+        .experience-item {
+            background-color: #fcfcfc;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(5px);
+        }
+
+        .experience-item h3 {
+            color: #2c3e50;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .experience-item h4 {
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .experience-item .date {
+            font-style: italic;
+            color: #777;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .experience-item ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding: 0;
+        }
+
+        .experience-item ul li {
+            margin-bottom: 8px;
+            color: #444;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: center;
+        }
+
+        #contact p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        #contact i {
+            color: #3498db;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 0.9em;
+        }
+
+        /* Animation classes for sections */
+        section.hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                padding: 15px 5%;
+                position: static; /* Make nav static on smaller screens */
+                background-color: #2c3e50; /* Solid background for smaller screens */
+            }
+
+            nav ul {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 15px;
+                align-items: center;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 3em;
+            }
+
+            .hero-content p {
+                font-size: 1.2em;
+            }
+
+            h2 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+
+            .skills-grid, .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card .btn-secondary {
+                width: 100%;
+                text-align: center;
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+
+            .hero-content p {
+                font-size: 1em;
+            }
+
+            .social-links a, .social-links-bottom a {
+                font-size: 1.5em;
+                margin: 0 10px;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero">
+        <nav>
+            <div class="logo">Yashwanth C.</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="hero-content">
+            <h1>Yashwanth Chowdary</h1>
+            <p>Data Science & AI Enthusiast | Full-Stack Developer</p>
+            <div class="social-links">
+                <a href="https://github.com/mintu3770" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/chedileti-yashwanth-chowdary" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="gold-brook-96.tiiny.site" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+            <a href="#projects" class="btn-primary">View My Work</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                As a Computer Science and Engineering student with a specialization in Data Science from Vellore Institute of Technology Vellore, I'm passionate about leveraging AI and machine learning to solve real-world problems. My expertise spans deep learning, data analytics, and full-stack development, allowing me to build comprehensive solutions from concept to deployment. I thrive in collaborative environments and am always eager to explore new technologies.
+            </p>
+            <p>
+                I am a co-founder and software engineer at Levitate Hyperloop, VIT's official Hyperloop team, where I designed a machine learning model to predict optimized paths for Hyperloop tracks across the Indian subcontinent and contributed to early-stage technical planning. My commitment to community is also evident through my active volunteering with the Youth Red Cross Association, where I've supported over 100 blood donations and coordinated two on-campus drives, and led awareness campaigns on mental health, CASA, and blood donation.
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programming Languages</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Java</li>
+                        <li>R</li>
+                        <li>HTML/CSS/JavaScript</li>
+                        <li>C++</li>
+                        <li>C</li>
+                        <li>PHP</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Data Science & AI</h3>
+                    <ul>
+                        <li>Machine Learning</li>
+                        <li>Deep Learning</li>
+                        <li>Artificial Intelligence (AI)</li>
+                        <li>Large Language Models (LLMs)</li>
+                        <li>Data Analytics (EDA, Predictive Analytics)</li>
+                        <li>Data Visualization</li>
+                        <li>Computer Vision</li>
+                        <li>Model Interpretability</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Web Development</h3>
+                    <ul>
+                        <li>Frontend Development</li>
+                        <li>Backend Development</li>
+                        <li>Full-Stack Development</li>
+                        <li>Frameworks: TensorFlow, Streamlit, Django, Web3.js</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases & Tools</h3>
+                    <ul>
+                        <li>MySQL</li>
+                        <li>Render</li>
+                        <li>GitHub</li>
+                        <li>LaTeX</li>
+                        <li>Visual Studio</li>
+                        <li>XCode</li>
+                        <li>Jupyter</li>
+                        <li>MATLAB</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>My Flagship Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <h3>Real-time Pharyngitis Detection Web App</h3>
+                    <p>Developed and deployed an AI-powered web application for real-time pharyngitis detection, utilizing a trained deep learning model (EfficientNetB0) for accurate throat image analysis. The project featured an intuitive frontend built with Streamlit and integrated Grad-CAM for visual interpretability, with the full-stack solution deployed on Render for seamless cloud accessibility. This project demonstrates proficiency in machine learning, web development, medical imaging, and cloud deployment.</p>
+                    <div class="project-tech">
+                        <span>TensorFlow</span><span>Streamlit</span><span>Render</span><span>Deep Learning</span><span>Medical Imaging</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://pharyngitis-model-2.onrender.com" target="_blank" class="btn-secondary">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/mintu3770/pharyngitismodel" target="_blank" class="btn-secondary">Source Code <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>M&A Scouting Tool with Gemini LLM</h3>
+                    <p>Developed a Streamlit-based M&A Scouting Tool using Gemini LLM and web scraping. Users enter business criteria to identify acquisition matches. The app uses AI to search the web, summarize relevant leads, and export results to CSV. Ideal for M&A analysts and business scouts.</p>
+                    <div class="project-tech">
+                        <span>Streamlit</span><span>Gemini LLM</span><span>Web Scraping</span><span>AI</span><span>Data Extraction</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://m-allm-jv9hvoo9x5dc6vq76ewyeo.streamlit.app/" target="_blank" class="btn-secondary">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        <a href="https://github.com/mintu3770/m-alm" target="_blank" class="btn-secondary">Source Code <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>Global Startup Funding Data Analysis</h3>
+                    <p>Explored global startup funding data in R. Used logistic regression and SVM for success prediction and applied PCA and clustering to group startups by funding behavior. Analyzed sectoral trends and investor patterns to identify high-potential regions and business models.</p>
+                    <div class="project-tech">
+                        <span>R</span><span>Logistic Regression</span><span>SVM</span><span>PCA</span><span>Clustering</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mintu3770/startups" target="_blank" class="btn-secondary">Source Code <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>QS World University Rankings Analysis</h3>
+                    <p>Analyzed QS World University Rankings 2024 using R. Applied PCA, regression, clustering, and ARIMA forecasting to evaluate and predict ranking trends. Explored how metrics like reputation and international outlook affect rankings. Delivered insights via R Shiny dashboard.</p>
+                    <div class="project-tech">
+                        <span>R</span><span>PCA</span><span>Regression</span><span>Clustering</span><span>ARIMA</span><span>R Shiny</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/mintu3770/qs,anking" target="_blank" class="btn-secondary">Source Code <i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <h3>Co-Founder and Software Engineer</h3>
+                <h4>LEVITATE HYPERLOOP (VIT'S OFFICIAL HYPERLOOP TEAM)</h4>
+                <p class="date">April 2024-March 2025 | Vellore, TN</p>
+                <ul>
+                    <li>Founding member of Levitate Hyperloop, a student-led initiative focused on developing Hyperloop transportation solutions.</li>
+                    <li>Designed and developed a machine learning model to predict the optimized and most feasible path for a Hyperloop track across the Indian subcontinent.</li>
+                    <li>Led efforts in defining recruitment requirements and onboarding new team members.</li>
+                    <li>Contributed to early-stage technical planning, team structuring, and collaborative problem-solving.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>Active Volunteer, Ex-Board Member, and Ex-Creativity Head</h3>
+                <h4>YOUTH RED CROSS ASSOCIATION - VIT</h4>
+                <p class="date">Jan 2022 - Present | Vellore, TN</p>
+                <ul>
+                    <li>Supported 100+ blood donations with local hospitals and coordinated two on-campus drives.</li>
+                    <li>Led awareness campaigns on mental health, CASA, and blood donation.</li>
+                    <li>Served as Extracurricular Coordinator for managing EXC course activities.</li>
+                    <li>Conducted hygiene and wellness sessions at underprivileged schools.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get in Touch</h2>
+            <p>I'm always open to discussing new projects, opportunities, and collaborations.</p>
+            <p><i class="fas fa-envelope"></i> chediletiyashwanthchowdary@gmail.com</p>
+            <p><i class="fas fa-phone"></i> 9966075930</p>
+            <div class="social-links-bottom">
+                <a href="https://github.com/mintu3770" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://linkedin.com/in/chedileti-yashwanth-chowdary" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="gold-brook-96.tiiny.site" target="_blank"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Yashwanth Chowdary. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Optional: Add a class to header when scrolled for subtle styling changes
+            const header = document.querySelector('nav');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Simple reveal animation for sections on scroll (using Intersection Observer)
+            const sections = document.querySelectorAll('section');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 // When 10% of the section is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once visible
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.classList.add('hidden'); // Add hidden class initially
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
